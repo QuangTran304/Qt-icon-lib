@@ -6,25 +6,18 @@ module.exports = {
   replaceAttrValues: {
     "#15284C": "currentColor",
   },
-  // svgProps: {
-  //   strokeWidth: "{props.width && Number(props.width) > 63 ? 1 : 1.5}",
-  // },
+  svgProps: {
+    strokeWidth: "{props.width && Number(props.width) > 63 ? 1 : 1.5}",
+    // strokeWidth: "{props.strokeWidth || 1}",
+  },
   svgoConfig: {
     plugins: [
       {
-        name: "preset-default",
+        name: "removeAttrs",
         params: {
-          overrides: {
-            removeTitle: false,
-          },
+          attrs: "(stroke-width)",
         },
       },
-      // {
-      //   name: "removeAttrs",
-      //   params: {
-      //     attrs: "(stroke-width)",
-      //   },
-      // },
     ],
   },
 };
